@@ -1,0 +1,84 @@
+<div id="content">
+  <div class="container-fluid">
+    <div class="card shadow my-4">
+      <div class="card-body">
+        <div class="col-12">
+          <p class="font-h2 my-3 mt-1">{{ data.data.controlName }}</p>
+          <table class="table table-bordered">
+            <tr>
+              <th>CID</th>
+              <td>{{ data.cid }}</td>
+            </tr>
+            <tr>
+              <th>Criticality</th>
+              <td>{{ data.data.criticality }}</td>
+            </tr>
+            <tr>
+              <th>Control type</th>
+              <td>{{ data.data.controlType }}</td>
+            </tr>
+            <tr>
+              <th>Provider</th>
+              <td>{{ data.data.provider }}</td>
+            </tr>
+            <tr>
+              <th>Service type</th>
+              <td>{{ data.data.serviceType }}</td>
+            </tr>
+            <tr>
+              <th>Resource type</th>
+              <td>{{ data.data.resourceType }}</td>
+            </tr>
+            <tr>
+              <th>Execution type</th>
+              <td>{{ data.data.executionType }}</td>
+            </tr>
+            <tr>
+              <th>Created</th>
+              <td>{{ data.data.created }}</td>
+            </tr>
+            <tr>
+              <th>Modified</th>
+              <td>{{ data.data.modified }}</td>
+            </tr>
+          </table>
+
+          {% if data.data.specification %}
+          <h2>Specification</h2>
+          <p>
+            {{ data.data.specification | safe }}
+          </p>
+          {% endif %}
+
+          {% if data.data.rationale %}
+          <h2>Rationale</h2>
+          <p>
+            {{ data.data.rationale | safe }}
+          </p>
+          {% endif %}
+
+          {% if data.data.evaluation %}
+          <h2>Evaluation</h2>
+          <p>
+            {{ data.data.evaluation.evaluationDescription | safe }}
+          </p>
+          {% endif %}
+
+          {% if data.data.manualRemediation %}
+          <h2>Remediation</h2>
+          <p>
+            {{ data.data.manualRemediation | safe }}
+          </p>
+          {% endif %}
+
+          {% if data.data.references %}
+          <h2>References</h2>
+          <p>
+            {{ data.data.references | safe }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
