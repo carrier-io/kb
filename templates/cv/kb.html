@@ -1,0 +1,59 @@
+<div id="content">
+  <div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">CLOUD COMPLIANCE CONTROLS KNOWLEDGE BASE</h1>
+
+    <p>
+      Last updated: {{ updated }}<br>
+      Signatures version: {{ signatures }}
+    </p>
+
+    <div class="card shadow mb-4">
+      <div class="card-body">
+
+        <div class="col-12">
+          <form class="form-inline" method="GET">
+            <div class="input-group">
+              <input type="hidden" name="page" value="{{ page }}">
+              <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..." {% if search %}value="{{ search }}"{% endif %}>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <hr>
+
+          <table class="table table-bordered">
+            <tr>
+              <th>CID</th>
+              <th>Criticality</th>
+              <th>Cloud</th>
+              <th>Title</th>
+            </tr>
+            {% for item in data %}
+            <tr>
+              <td><a href="{{ url_for('theme.route_section_subsection_page', section='kb', subsection='cv', page='view', cid=item.cid) }}">{{ item.cid }}</a></td>
+              <td><a href="{{ url_for('theme.route_section_subsection_page', section='kb', subsection='cv', page='view', cid=item.cid) }}">{{ item.data.criticality }}</a></td>
+              <td><a href="{{ url_for('theme.route_section_subsection_page', section='kb', subsection='cv', page='view', cid=item.cid) }}">{{ item.data.provider }}</a></td>
+              <td><a href="{{ url_for('theme.route_section_subsection_page', section='kb', subsection='cv', page='view', cid=item.cid) }}">{{ item.data.controlName }}</a></td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+
+        <div class="row">
+          {% if search %}
+          <a href="{{ url_for('theme.route_section_subsection', section='kb', subsection='cv', page=page-1, search=search) }}" role="button" class="btn btn-outline-primary ml-auto mr-2 {% if page <= 1 %}disabled{% endif %}" {% if page <= 1 %}aria-disabled="true"{% endif %}>Prev</a>
+          <a href="{{ url_for('theme.route_section_subsection', section='kb', subsection='cv', page=page+1, search=search) }}"role="button" class="btn btn-outline-primary mr-auto">Next</a>
+          {% else %}
+          <a href="{{ url_for('theme.route_section_subsection', section='kb', subsection='cv', page=page-1) }}" role="button" class="btn btn-outline-primary ml-auto mr-2 {% if page <= 1 %}disabled{% endif %}" {% if page <= 1 %}aria-disabled="true"{% endif %}>Prev</a>
+          <a href="{{ url_for('theme.route_section_subsection', section='kb', subsection='cv', page=page+1) }}"role="button" class="btn btn-outline-primary mr-auto">Next</a>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

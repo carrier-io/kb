@@ -1,0 +1,66 @@
+<div id="content">
+  <div class="container-fluid">
+    <div class="card shadow my-4">
+      <div class="card-body">
+        <div class="col-12">
+          <p class="font-h2 my-3 mt-1">{{ data.data.title }}</p>
+          <table class="table table-bordered">
+            <tr>
+              <th>QID</th>
+              <td>{{ data.qid }}</td>
+            </tr>
+            <tr>
+              <th>Vulnerability type</th>
+              <td>{{ data.data.type }}</td>
+            </tr>
+            <tr>
+              <th>Category</th>
+              <td>{{ data.data.category }}</td>
+            </tr>
+            <tr>
+              <th>Severity</th>
+              <td>{{ data.data.severity }}</td>
+            </tr>
+            <tr>
+              <th>Patchable</th>
+              <td>{% if data.data.patchable %}True{% else %}False{% endif %}</td>
+            </tr>
+            <tr>
+              <th>PCI flag</th>
+              <td>{% if data.data.pci_flag %}True{% else %}False{% endif %}</td>
+            </tr>
+            <tr>
+              <th>Published</th>
+              <td>{{ data.data.published_datetime }}</td>
+            </tr>
+            <tr>
+              <th>Last service modification</th>
+              <td>{{ data.data.last_service_modification_datetime }}</td>
+            </tr>
+          </table>
+
+          {% if data.data.diagnosis %}
+          <h2>Diagnosis</h2>
+          <p>
+            {{ data.data.diagnosis | safe }}
+          </p>
+          {% endif %}
+
+          {% if data.data.consequence %}
+          <h2>Consequence</h2>
+          <p>
+            {{ data.data.consequence | safe }}
+          </p>
+          {% endif %}
+
+          {% if data.data.solution %}
+          <h2>Solution</h2>
+          <p>
+            {{ data.data.solution | safe }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
