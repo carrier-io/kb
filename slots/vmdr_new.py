@@ -29,21 +29,21 @@ class Slot:  # pylint: disable=E1101,R0903
 
 
     @web.slot("kb_slot_vmdr_list_content")
-    @auth.decorators.check_slot([], access_denied_reply=theme.access_denied_part)
+    @auth.decorators.check_slot(["kb.vmdr"], access_denied_reply=theme.access_denied_part)
     def _vmdr_kb_content(self, context, slot, payload):
         with context.app.app_context():
             return self.descriptor.render_template("vmdr/kb_list.html",)
 
 
     @web.slot("kb_slot_vmdr_list_styles")
-    @auth.decorators.check_slot([])
+    @auth.decorators.check_slot(["kb.vmdr"])
     def _vmdr_kb_styles(self, context, slot, payload):
         with context.app.app_context():
             return self.descriptor.render_template("vmdr/kb_styles.html")
 
 
     @web.slot("kb_slot_vmdr_list_scripts")
-    @auth.decorators.check_slot([], access_denied_reply=theme.access_denied_part)
+    @auth.decorators.check_slot(["kb.vmdr"])
     def _vmdr_kb_view_content(self, context, slot, payload):
         with context.app.app_context():
             return self.descriptor.render_template("vmdr/kb_scripts.html")

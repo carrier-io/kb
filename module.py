@@ -63,6 +63,14 @@ class Module(module.ModuleModel):
             "kb", "KB",
             kind="holder",
             location="left",
+            permissions={
+                "permissions": ["kb"],
+                "recommended_roles": {
+                    "administration": {"admin": True, "viewer": True, "editor": True},
+                    "default": {"admin": True, "viewer": True, "editor": True},
+                    "developer": {"admin": True, "viewer": True, "editor": True},
+                }
+            },
             icon_class="fas fa-info-circle fa-fw",
         )
         theme.register_subsection(
@@ -71,6 +79,14 @@ class Module(module.ModuleModel):
             title="VMDR KB",
             kind="slot",
             prefix="kb_slot_vmdr_list_",
+            permissions={
+                "permissions": ["kb.vmdr"],
+                "recommended_roles": {
+                    "administration": {"admin": True, "viewer": True, "editor": True},
+                    "default": {"admin": True, "viewer": True, "editor": True},
+                    "developer": {"admin": True, "viewer": True, "editor": True},
+                }
+            },
             icon_class="fas fa-server fa-fw",
             weight=2,
         )
@@ -79,6 +95,14 @@ class Module(module.ModuleModel):
             title="VMDR KB",
             kind="slot",
             prefix="kb_slot_vmdr_view_",
+            permissions={
+                "permissions": ["kb.vmdr.view"],
+                "recommended_roles": {
+                    "administration": {"admin": True, "viewer": True, "editor": True},
+                    "default": {"admin": True, "viewer": True, "editor": True},
+                    "developer": {"admin": True, "viewer": True, "editor": True},
+                }
+            },
         )
         theme.register_subsection(
             "kb",
@@ -86,6 +110,14 @@ class Module(module.ModuleModel):
             title="CloudView KB",
             kind="slot",
             prefix="kb_slot_cv_list_",
+            permissions={
+                "permissions": ["kb.cv"],
+                "recommended_roles": {
+                    "administration": {"admin": True, "viewer": True, "editor": True},
+                    "default": {"admin": True, "viewer": True, "editor": True},
+                    "developer": {"admin": True, "viewer": True, "editor": True},
+                }
+            },
             icon_class="fas fa-cloud fa-fw",
         )
         theme.register_page(
@@ -93,6 +125,14 @@ class Module(module.ModuleModel):
             title="CloudView KB",
             kind="slot",
             prefix="kb_slot_cv_view_",
+            permissions={
+                "permissions": ["kb.cv.view"],
+                "recommended_roles": {
+                    "administration": {"admin": True, "viewer": True, "editor": True},
+                    "default": {"admin": True, "viewer": True, "editor": True},
+                    "developer": {"admin": True, "viewer": True, "editor": True},
+                }
+            },
         )
         # Init RPCs
         self.descriptor.init_rpcs()

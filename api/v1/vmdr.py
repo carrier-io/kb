@@ -35,7 +35,13 @@ class API(flask_restful.Resource):  # pylint: disable=R0903
         self.module = module
 
 
-    @auth.decorators.check_api(['global_admin'])
+    @auth.decorators.check_api({
+        "permissions": ["kb.vmdr.vmdr.view"],
+        "recommended_roles": {
+            "administration": {"admin": True, "viewer": True, "editor": True},
+            "default": {"admin": True, "viewer": True, "editor": True},
+            "developer": {"admin": True, "viewer": True, "editor": True},
+        }})
     def get(self):
         """ Get all vulnerabilities"""
 
@@ -49,10 +55,16 @@ class API(flask_restful.Resource):  # pylint: disable=R0903
             search=search_text,
         )
 
-        return {"ok": True, "total": total, "rows":data}
+        return {"ok": True, "total": total, "rows": data}
 
 
-    @auth.decorators.check_api(["global_admin"])
+    @auth.decorators.check_api({
+        "permissions": ["kb.vmdr.vmdr.create"],
+        "recommended_roles": {
+            "administration": {"admin": True, "viewer": False, "editor": True},
+            "default": {"admin": True, "viewer": False, "editor": True},
+            "developer": {"admin": True, "viewer": False, "editor": True},
+        }})
     def post(self):
         """ Add QIDs from POST JSON """
         added = 0

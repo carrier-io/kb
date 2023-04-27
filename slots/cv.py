@@ -29,7 +29,7 @@ class Slot:  # pylint: disable=E1101,R0903
 
 
     @web.slot("kb_slot_cv_content")
-    @auth.decorators.check_slot([], access_denied_reply=theme.access_denied_part)
+    @auth.decorators.check_slot(["kb.cv"], access_denied_reply=theme.access_denied_part)
     def _cv_kb_content(self, context, slot, payload):
         _ = slot
         #
@@ -52,7 +52,7 @@ class Slot:  # pylint: disable=E1101,R0903
     
     
     @web.slot("kb_slot_cv_styles")
-    @auth.decorators.check_slot([])
+    @auth.decorators.check_slot(["kb.cv"])
     def _cv_kb_styles(self, context, slot, payload):
         _ = slot, payload
         #
@@ -61,7 +61,7 @@ class Slot:  # pylint: disable=E1101,R0903
 
 
     @web.slot("kb_slot_cv_view_content")
-    @auth.decorators.check_slot([], access_denied_reply=theme.access_denied_part)
+    @auth.decorators.check_slot(["kb.cv.view"], access_denied_reply=theme.access_denied_part)
     def _cv_kb_view_content(self, context, slot, payload):
         _ = slot
         #
